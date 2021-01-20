@@ -1,0 +1,5 @@
+package com.trabalho.dto;
+
+public class ClientDTO {
+
+}
