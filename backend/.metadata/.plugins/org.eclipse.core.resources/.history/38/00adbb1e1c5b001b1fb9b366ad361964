@@ -1,0 +1,16 @@
+package com.trabalho.services;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.trabalho.entities.Client;
+
+@Service
+public class ClientService {
+	
+	public List<Client> findAll(){
+		
+	}
+	
+}
