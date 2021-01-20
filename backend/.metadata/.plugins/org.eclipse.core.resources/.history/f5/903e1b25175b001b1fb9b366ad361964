@@ -1,0 +1,5 @@
+package com.trabalho.entities;
+
+public class Client {
+
+}
