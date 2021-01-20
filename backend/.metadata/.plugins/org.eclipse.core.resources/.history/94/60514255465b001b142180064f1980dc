@@ -35,7 +35,7 @@ public class ClientService {
 	
 	@Transactional
 	public ClientDTO insert(ClientDTO dto) {
-		Client entity = new Client();
+		Client entity = new Category();
 		entity.setName(dto.getName());
 		entity.setCpf(dto.getCpf());
 		entity.setIncome(dto.getIncome());
