@@ -2,8 +2,6 @@ package com.trabalho.services;
 
 import java.util.Optional;
 
-import javax.persistence.EntityNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -14,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.trabalho.dto.ClientDTO;
 import com.trabalho.entities.Client;
 import com.trabalho.repositories.ClientRepository;
-import com.trabalho.services.exceptions.ResourceNotFoundException;
+import com.trabalho.services.exceptions.EntityNotFoundException;
 
 
 
@@ -33,7 +31,7 @@ public class ClientService {
 	@Transactional(readOnly = true)
 	public ClientDTO findById(Long id) {
 		Optional<Client> obj =  repository.findById(id);
-		Client entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found" + id ));
+		Client entity = obj.orElseThrow(() -> new EntityNotFoundException("Entity not found"));
 		return new ClientDTO(entity);
 	}
 	
@@ -62,7 +60,7 @@ public class ClientService {
 			return new ClientDTO(entity); 
 		}
 		catch( EntityNotFoundException e ) {
-			throw new ResourceNotFoundException("Id not found" + id );
+			throw new EntityNotFoundException("Id not found");
 		}
 	}
 
@@ -71,7 +69,7 @@ public class ClientService {
 			repository.deleteById(id);
 		}
 		catch( EmptyResultDataAccessException e ) {
-			throw new ResourceNotFoundException("Id not found");
+			throw new EntityNotFoundException("Id not found");
 		}
 	}
 	
