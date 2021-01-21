@@ -26,8 +26,8 @@ public class ClientService {
 	
 	@Transactional(readOnly = true)
 	public Page<ClientDTO> findAllPaged(PageRequest pageRequest){
-		Page<Client> list = repository.findAll(pageRequest);
-		return list.map(x -> new ClientDTO(x));
+		Page<Client> list = repository.findAll();
+		return list.stream().map(x -> new ClientDTO(x)).collect(Collectors.toList());
 	}
 	
 	@Transactional(readOnly = true)
